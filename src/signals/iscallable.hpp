@@ -1,7 +1,7 @@
 #ifndef CALIBRI_SIGNALS_ISCALLABLE_HPP
 #define CALIBRI_SIGNALS_ISCALLABLE_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
 namespace Calibri {
@@ -10,16 +10,12 @@ namespace Signals {
 
 namespace Internal {
 
-/*!
- *  FunctionPointerOrFunctionObjectCase class
- */
+// FunctionPointerOrFunctionObjectCase class
 class FunctionOrFunctionObjectCase
 {
 };
 
-/*!
- *  MemberFunctionPointerCase class
- */
+// MemberFunctionPointerCase class
 class MemberFunctionCase
 {
 };

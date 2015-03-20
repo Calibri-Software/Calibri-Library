@@ -1,7 +1,7 @@
-//! Qt includes
+// Qt includes
 #include <QtTest/QtTest>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include <crypto/cipher.hpp>
 
 class tst_Cipher : public QObject
@@ -25,7 +25,7 @@ void tst_Cipher::testDES()
 {
     bool ok {};
 
-    //! DES
+    // DES
     auto out = Calibri::cipher<Calibri::CipherAlgorithm::DESecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_DES)
     QVERIFY(ok);
@@ -70,7 +70,7 @@ void tst_Cipher::testDES()
     QVERIFY(out.empty());
 #endif
 
-    //! DES2
+    // DES2
     out = Calibri::cipher<Calibri::CipherAlgorithm::DES2ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_DES)
     QVERIFY(ok);
@@ -115,7 +115,7 @@ void tst_Cipher::testDES()
     QVERIFY(out.empty());
 #endif
 
-    //! DES3
+    // DES3
     out = Calibri::cipher<Calibri::CipherAlgorithm::DES3ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_DES)
     QVERIFY(ok);
@@ -160,7 +160,7 @@ void tst_Cipher::testDES()
     QVERIFY(out.empty());
 #endif
 
-    //! DESX
+    // DESX
     out = Calibri::cipher<Calibri::CipherAlgorithm::DESXcbc, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_DES)
     QVERIFY(ok);
@@ -438,7 +438,7 @@ void tst_Cipher::testAES()
 {
     bool ok {};
 
-    //! AES128
+    // AES128
     auto out = Calibri::cipher<Calibri::CipherAlgorithm::AES128ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_AES)
     QVERIFY(ok);
@@ -494,7 +494,7 @@ void tst_Cipher::testAES()
     QVERIFY(out.empty());
 #endif
 
-    //! AES192
+    // AES192
     out = Calibri::cipher<Calibri::CipherAlgorithm::AES192ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_AES)
     QVERIFY(ok);
@@ -550,7 +550,7 @@ void tst_Cipher::testAES()
     QVERIFY(out.empty());
 #endif
 
-    //! AES256
+    // AES256
     out = Calibri::cipher<Calibri::CipherAlgorithm::AES256ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_AES)
     QVERIFY(ok);
@@ -611,7 +611,7 @@ void tst_Cipher::testCAMELLIA()
 {
     bool ok {};
 
-    //! CAMELLIA128
+    // CAMELLIA128
     auto out = Calibri::cipher<Calibri::CipherAlgorithm::CAMELLIA128ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_CAMELLIA)
     QVERIFY(ok);
@@ -656,7 +656,7 @@ void tst_Cipher::testCAMELLIA()
     QVERIFY(out.empty());
 #endif
 
-    //! CAMELLIA192
+    // CAMELLIA192
     out = Calibri::cipher<Calibri::CipherAlgorithm::CAMELLIA192ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_CAMELLIA)
     QVERIFY(ok);
@@ -701,7 +701,7 @@ void tst_Cipher::testCAMELLIA()
     QVERIFY(out.empty());
 #endif
 
-    //! CAMELLIA256
+    // CAMELLIA256
     out = Calibri::cipher<Calibri::CipherAlgorithm::CAMELLIA256ecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_CAMELLIA)
     QVERIFY(ok);
@@ -751,7 +751,7 @@ void tst_Cipher::testSEED()
 {
     bool ok {};
 
-    //! CAMELLIA128
+    // CAMELLIA128
     auto out = Calibri::cipher<Calibri::CipherAlgorithm::SEEDecb, Calibri::CipherMode::Encrypt>("Some data", "Some key", "Some iv", &ok);
 #if !defined(OPENSSL_NO_SEED)
     QVERIFY(ok);

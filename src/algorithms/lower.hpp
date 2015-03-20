@@ -1,10 +1,10 @@
 #ifndef CALIBRI_ALGORITHMS_LOWER_HPP
 #define CALIBRI_ALGORITHMS_LOWER_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {
@@ -13,9 +13,7 @@ namespace Algorithms {
 
 namespace Internal {
 
-/*!
- *  ToLower class
- */
+// ToLower class
 class ToLower
 {
 public:
@@ -26,9 +24,7 @@ private:
     std::locale m_locale {};
 };
 
-/*!
- *  ToLower inline methods
- */
+// ToLower inline methods
 template<typename DataType>
 inline auto ToLower::operator ()(DataType data) const noexcept -> DataType
 {

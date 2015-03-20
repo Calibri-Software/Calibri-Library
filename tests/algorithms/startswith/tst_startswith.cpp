@@ -1,7 +1,7 @@
-//! Qt includes
+// Qt includes
 #include <QtTest/QtTest>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include <algorithms/startswith.hpp>
 
 class tst_StartsWith : public QObject

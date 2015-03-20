@@ -1,10 +1,10 @@
 #ifndef CALIBRI_ALGORITHMS_UPPER_HPP
 #define CALIBRI_ALGORITHMS_UPPER_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {
@@ -13,9 +13,7 @@ namespace Algorithms {
 
 namespace Internal {
 
-/*!
- *  ToUpper class
- */
+// ToUpper class
 class ToUpper
 {
 public:
@@ -26,9 +24,7 @@ private:
     std::locale m_locale {};
 };
 
-/*!
- *  ToUpper inline methods
- */
+// ToUpper inline methods
 template<typename DataType>
 inline auto ToUpper::operator ()(DataType data) const noexcept -> DataType
 {

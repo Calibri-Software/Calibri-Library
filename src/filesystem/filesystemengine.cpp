@@ -1,17 +1,17 @@
-//! Self includes
+// Self includes
 #include "filesystemengine.hpp"
 
-//! Std includes
+// Std includes
 #include <array>
 #if defined(OS_WINDOWS)
 #   include <memory>
 #endif
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "algorithms/split.hpp"
 #include "algorithms/anyof.hpp"
 
-//! System includes
+// System includes
 #if defined(OS_LINUX) || defined(OS_UNIX)
 #   include <sys/sendfile.h>
 #   include <fcntl.h>

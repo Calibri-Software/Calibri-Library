@@ -1,11 +1,11 @@
 #ifndef CALIBRI_THREAD_SPINLOCK_HPP
 #define CALIBRI_THREAD_SPINLOCK_HPP
 
-//! Std includes
+// Std includes
 #include <atomic>
 #include <thread>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 #include "tools/disablecopyable.hpp"
 
@@ -29,9 +29,7 @@ inline void yield(uint32 spin) noexcept
 
 } // end namespace Internal
 
-/*!
- *  SpinLock class
- */
+// SpinLock class
 class SpinLock : private DisableCopyable
 {
 public:
@@ -46,9 +44,7 @@ private:
     std::atomic_flag m_atomicFlag { ATOMIC_FLAG_INIT };
 };
 
-/*!
- *  SpinLock inline methods
- */
+// SpinLock inline methods
 inline auto SpinLock::lock() noexcept -> void
 {
     for (uint32 spin = 0; !tryLock(); ++spin)

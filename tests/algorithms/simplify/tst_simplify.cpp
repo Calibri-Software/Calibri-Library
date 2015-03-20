@@ -1,7 +1,7 @@
-//! Qt includes
+// Qt includes
 #include <QtTest/QtTest>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include <algorithms/simplify.hpp>
 
 class tst_Simplify : public QObject

@@ -1,10 +1,10 @@
 #ifndef CALIBRI_ALGORITHMS_ANYOF_HPP
 #define CALIBRI_ALGORITHMS_ANYOF_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {
@@ -13,9 +13,7 @@ namespace Algorithms {
 
 namespace Internal {
 
-/*!
- *  IsAnyOf class
- */
+// IsAnyOf class
 template<typename DataType>
 class IsAnyOf
 {
@@ -29,9 +27,7 @@ private:
     DataType m_data {};
 };
 
-/*!
- *  IsAnyOf inline methods
- */
+// IsAnyOf inline methods
 template<typename DataType>
 inline IsAnyOf<DataType>::IsAnyOf(const DataType &data) noexcept :
     m_data { data }

@@ -1,16 +1,14 @@
 #ifndef CALIBRI_IO_IORANDOMACCESSINTERFACE_HPP
 #define CALIBRI_IO_IORANDOMACCESSINTERFACE_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "iointerface.hpp"
 
 namespace Calibri {
 
 namespace Io {
 
-/*!
- *  IORandomAccessInterface class
- */
+// IORandomAccessInterface class
 class IORandomAccessInterface : public IOInterface
 {
 public:
@@ -34,9 +32,7 @@ private:
     sizeinfo m_pos {};
 };
 
-/*!
- *  IORandomAccessInterface inline methods
- */
+// IORandomAccessInterface inline methods
 inline auto IORandomAccessInterface::pos() const noexcept -> sizeinfo
 {
     return m_pos;

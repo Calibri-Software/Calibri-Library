@@ -1,14 +1,7 @@
 #ifndef CALIBRI_GLOBAL_SYSTEMDETECTION_HPP
 #define CALIBRI_GLOBAL_SYSTEMDETECTION_HPP
 
-//! Defines
-/*!
- *  The operation system, must be one of: (OS_x)
- *
- *   WINDOWS    - Windows
- *   LINUX      - Linux
- *   UNIX       - Any UNIX BSD/SYSV system
- */
+// Defines
 #if defined(_WIN32)
 #   define OS_WINDOWS
 #elif defined(__linux__)

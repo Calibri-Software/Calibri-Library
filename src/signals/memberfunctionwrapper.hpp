@@ -1,7 +1,10 @@
 #ifndef CALIBRI_SIGNALS_MEMBERFUNCTIONWRAPPER_HPP
 #define CALIBRI_SIGNALS_MEMBERFUNCTIONWRAPPER_HPP
 
-//! Calibri-Library includes
+// Std includes
+#include <utility>
+
+// Calibri-Library includes
 #include "tools/disableconstructible.hpp"
 
 namespace Calibri {
@@ -10,7 +13,7 @@ namespace Signals {
 
 namespace Internal {
 
-//! Aliases
+// Aliases
 template<typename ReturnType,
          typename ClassType,
          typename ...ArgumentsType>
@@ -21,9 +24,7 @@ template<typename ReturnType,
          typename ...ArgumentsType>
 using ConstMemberFunction = ReturnType (ClassType::*)(ArgumentsType ...) const;
 
-/*!
- *  MemberFunction class
- */
+// MemberFunction class
 template<typename ...>
 class MemberFunctionWrapper : private DisableConstructible
 {
@@ -71,9 +72,7 @@ private:
     ObjectType *m_object {};
 };
 
-/*!
- *  MemberFunction inline methods
- */
+// MemberFunction inline methods
 template<typename ObjectType,
          typename ReturnType,
          typename ...ArgumentsType>

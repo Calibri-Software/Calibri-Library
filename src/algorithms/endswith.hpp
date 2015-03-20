@@ -1,10 +1,10 @@
 #ifndef CALIBRI_ALGORITHMS_ENDSWITH_HPP
 #define CALIBRI_ALGORITHMS_ENDSWITH_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {

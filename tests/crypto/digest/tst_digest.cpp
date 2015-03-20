@@ -1,7 +1,7 @@
-//! Qt includes
+// Qt includes
 #include <QtTest/QtTest>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include <crypto/digest.hpp>
 
 class tst_Digest : public QObject

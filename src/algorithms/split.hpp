@@ -1,12 +1,12 @@
 #ifndef CALIBRI_ALGORITHMS_SPLIT_HPP
 #define CALIBRI_ALGORITHMS_SPLIT_HPP
 
-//! Std includes
+// Std includes
 #include <deque>
 #include <forward_list>
 #include <list>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {

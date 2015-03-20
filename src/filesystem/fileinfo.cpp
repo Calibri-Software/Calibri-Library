@@ -1,12 +1,12 @@
-//! Self includes
+// Self includes
 #include "fileinfo.hpp"
 
-//! Std includes
+// Std includes
 #if defined(OS_WINDOWS)
 #   include <memory>
 #endif
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "filesystemengine.hpp"
 
 namespace Calibri {

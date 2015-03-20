@@ -1,7 +1,7 @@
-//! Self includes
+// Self includes
 #include "directoryiterator.hpp"
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "filesystemengine.hpp"
 #include "algorithms/anyof.hpp"
 

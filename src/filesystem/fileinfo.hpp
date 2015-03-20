@@ -1,17 +1,17 @@
 #ifndef CALIBRI_FILESYSTEM_FILEINFO_HPP
 #define CALIBRI_FILESYSTEM_FILEINFO_HPP
 
-//! Std includes
+// Std includes
 #include <string>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 
 namespace Calibri {
 
 namespace FileSystem {
 
-//! Enumerations
+// Enumerations
 enum class FileType : uint8 {
     FileNotFound,
     RegularFile,
@@ -28,9 +28,7 @@ static const std::string separatorPattern { "\\/", 2 };
 
 } // end namespace Constants
 
-/*!
- *  FileInfo class
- */
+// FileInfo class
 class FileInfo
 {
 public:
@@ -67,9 +65,7 @@ private:
     auto refresh(const std::string &path) noexcept -> void;
 };
 
-/*!
- *  FileInfo inline methods
- */
+// FileInfo inline methods
 inline auto FileInfo::absoluteFilePath() const noexcept -> const std::string &
 {
     return m_absoluteFilePath;

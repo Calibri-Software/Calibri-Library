@@ -1,11 +1,11 @@
 #ifndef CALIBRI_SIGNALS_SIGNAL_HPP
 #define CALIBRI_SIGNALS_SIGNAL_HPP
 
-//! Std includes
+// Std includes
 #include <list>
 #include <mutex>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "connection.hpp"
 #include "lastvalue.hpp"
 #include "global/compilerdetection.hpp"
@@ -14,15 +14,13 @@ namespace Calibri {
 
 namespace Signals {
 
-//! Enumerations
+// Enumerations
 enum class SignalConnectionMode : uint8 {
     DefaultConnection,
     UniqueConnection
 };
 
-/*!
- *  Signal class
- */
+// Signal class
 template<typename ...>
 class Signal : private DisableConstructible
 {
@@ -32,7 +30,7 @@ template<typename ReturnType,
          typename ...ArgumentsType>
 class Signal<Internal::Function<ReturnType, ArgumentsType ...>> : private DisableCopyable, public Internal::TrackableObject, public Internal::TrackableObjectObserver
 {
-    //! Aliases
+    // Aliases
     using ConnectionType = Internal::Connection<Internal::Function<ReturnType, ArgumentsType ...>>;
 
 public:
@@ -121,9 +119,7 @@ private:
     SpinLock m_context {};
 };
 
-/*!
- *  Signal inline methods
- */
+// Signal inline methods
 template<typename ReturnType,
          typename ...ArgumentsType>
 inline Signal<Internal::Function<ReturnType, ArgumentsType ...>>::~Signal() noexcept

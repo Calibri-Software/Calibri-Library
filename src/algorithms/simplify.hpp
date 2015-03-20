@@ -1,7 +1,7 @@
 #ifndef CALIBRI_ALGORITHMS_SIMPLIFY_HPP
 #define CALIBRI_ALGORITHMS_SIMPLIFY_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "trim.hpp"
 #include "tools/bytearray.hpp"
 

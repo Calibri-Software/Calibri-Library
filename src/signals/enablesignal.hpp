@@ -1,7 +1,7 @@
 #ifndef CALIBRI_SIGNALS_ENABLESIGNAL_HPP
 #define CALIBRI_SIGNALS_ENABLESIGNAL_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "trackableobject.hpp"
 
 namespace Calibri {
@@ -14,9 +14,7 @@ static thread_local SpinLock threadContext {};
 
 } // end namespace Variables
 
-/*!
- *  EnableSignals class
- */
+// EnableSignals class
 class EnableSignal : private DisableCopyable, public Internal::TrackableObject
 {
 public:
@@ -26,9 +24,7 @@ private:
     SpinLock &m_context { Variables::threadContext };
 };
 
-/*!
- *  EnableSignals inline methods
- */
+// EnableSignals inline methods
 inline auto EnableSignal::context() const noexcept -> SpinLock &
 {
     return m_context;

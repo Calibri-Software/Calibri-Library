@@ -5,9 +5,7 @@ namespace Calibri {
 
 namespace Tools {
 
-/*!
- *  DisableCopyable class
- */
+// DisableCopyable class
 class DisableCopyable
 {
 public:

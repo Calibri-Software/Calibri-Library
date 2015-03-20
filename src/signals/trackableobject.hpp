@@ -1,11 +1,12 @@
 #ifndef CALIBRI_SIGNALS_TRACKABLEOBJECT_HPP
 #define CALIBRI_SIGNALS_TRACKABLEOBJECT_HPP
 
-//! Std includes
+// Std includes
 #include <mutex>
 #include <vector>
+#include <algorithm>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "thread/spinlock.hpp"
 
 namespace Calibri {
@@ -14,21 +15,17 @@ namespace Signals {
 
 namespace Internal {
 
-//! Forward declarations
+// Forward declarations
 class TrackableObject;
 
-/*!
- *  SignalObserver class
- */
+// SignalObserver class
 class TrackableObjectObserver
 {
 public:
     virtual auto destroyed(TrackableObject *trackableObject) noexcept -> void = 0;
 };
 
-/*!
- *  SignalTrackableObject class
- */
+// SignalTrackableObject class
 class TrackableObject
 {
 public:
@@ -43,9 +40,7 @@ private:
     SpinLock m_context {};
 };
 
-/*!
- *  SignalTrackableObject inline methods
- */
+// SignalTrackableObject inline methods
 inline TrackableObject::~TrackableObject() noexcept
 {
     std::lock_guard<SpinLock> locker { m_context };

@@ -1,14 +1,14 @@
 #ifndef CALIBRI_FILESYSTEM_DIRECTORYITERATOR_HPP
 #define CALIBRI_FILESYSTEM_DIRECTORYITERATOR_HPP
 
-//! Std includes
+// Std includes
 #include <string>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/systemdetection.hpp"
 #include "tools/disablecopyable.hpp"
 
-//! System includes
+// System includes
 #if defined(OS_WINDOWS)
 #   include <windows.h>
 #elif defined(OS_LINUX) || defined(OS_UNIX)
@@ -19,9 +19,7 @@ namespace Calibri {
 
 namespace FileSystem {
 
-/*!
- *  DirectoryIterator class
- */
+// DirectoryIterator class
 class DirectoryIterator : private DisableCopyable
 {
 public:
@@ -42,9 +40,7 @@ private:
 #endif
 };
 
-/*!
- *  DirectoryIterator inline methods
- */
+// DirectoryIterator inline methods
 inline DirectoryIterator::~DirectoryIterator() noexcept
 {
 #if defined(OS_WINDOWS)

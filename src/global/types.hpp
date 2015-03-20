@@ -1,14 +1,14 @@
 #ifndef CALIBRI_GLOBAL_TYPES_HPP
 #define CALIBRI_GLOBAL_TYPES_HPP
 
-//! Std includes
+// Std includes
 #include <cstdint>
 #include <cstddef>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "systemdetection.hpp"
 
-//! Aliases
+// Aliases
 using int8 = int8_t;
 using int16 = int16_t;
 using int32 = int32_t;
@@ -33,17 +33,10 @@ using char32 = char32_t;
 using wchar = wchar_t;
 
 using uchar = unsigned char;
-using uwchar = unsigned wchar_t;
 using ushort = unsigned short;
 using uint = unsigned int;
 using ulong = unsigned long;
 
 using sizeinfo = size_t;
-
-#if defined(OS_WINDOWS)
-using fdptr = intptr;
-#elif defined(OS_UNIX) || defined(OS_LINUX)
-using fdptr = int32;
-#endif
 
 #endif // CALIBRI_GLOBAL_TYPES_HPP

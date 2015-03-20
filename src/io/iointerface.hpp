@@ -1,19 +1,17 @@
 #ifndef CALIBRI_IO_IOINTERFACE_HPP
 #define CALIBRI_IO_IOINTERFACE_HPP
 
-//! Std includes
+// Std includes
 #include <string>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 
 namespace Calibri {
 
 namespace Io {
 
-/*!
- *  IOInterface class
- */
+// IOInterface class
 class IOInterface
 {
 public:
@@ -31,9 +29,7 @@ protected:
     virtual auto writeData(const char *data, sizeinfo size) noexcept -> sizeinfo = 0;
 };
 
-/*!
- *  IOInterface inline methods
- */
+// IOInterface inline methods
 inline auto IOInterface::read(char *data, sizeinfo size) noexcept -> sizeinfo
 {
     return readData(data, size);

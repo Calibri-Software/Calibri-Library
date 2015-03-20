@@ -1,14 +1,14 @@
 #ifndef CALIBRI_FILESYSTEM_SYSTEMAPI_HPP
 #define CALIBRI_FILESYSTEM_SYSTEMAPI_HPP
 
-//! Std includes
+// Std includes
 #include <iostream>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 
 #if defined(OS_WINDOWS)
-//! System includes
+// System includes
 #include <windows.h>
 
 #   if !defined(REPARSE_DATA_BUFFER_HEADER_SIZE)

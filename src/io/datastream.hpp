@@ -1,7 +1,7 @@
 #ifndef CALIBRI_IO_DATASTREAM_HPP
 #define CALIBRI_IO_DATASTREAM_HPP
 
-//! Std includes
+// Std includes
 #include <deque>
 #include <forward_list>
 #include <list>
@@ -10,7 +10,7 @@
 #include <unordered_set>
 #include <unordered_map>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "buffer.hpp"
 #include "tools/disablecopyable.hpp"
 #include "tools/metacast.hpp"
@@ -19,7 +19,7 @@ namespace Calibri {
 
 namespace Io {
 
-//! Enumerations
+// Enumerations
 enum class DataStreamStatus : uint8 {
     Ok,
     ReadError,
@@ -32,9 +32,7 @@ static constexpr char nullTerminator { '\0' };
 
 } // end namespace Constants
 
-/*!
- *  DataStream class
- */
+// DataStream class
 template<typename DeviceType,
          typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
 class DataStream : private DisableCopyable
@@ -56,9 +54,7 @@ private:
     DataStreamStatus m_status { DataStreamStatus::Ok };
 };
 
-/*!
- *  DataStream inline methods
- */
+// DataStream inline methods
 template<typename DeviceType,
          typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
 inline DataStream<DeviceType, Enabler ...>::DataStream(DeviceType *device) noexcept :
@@ -95,9 +91,7 @@ inline auto DataStream<DeviceType, Enabler ...>::resetStatus() noexcept -> void
     m_status = DataStreamStatus::Ok;
 }
 
-/*!
- *  DataStream write operators
- */
+// DataStream write operators
 template<typename DeviceType,
          typename DataType,
          typename std::enable_if<std::is_arithmetic<DataType>::value>::type ...Enabler>
@@ -142,7 +136,7 @@ inline auto operator <<(DataStream<DeviceType> &dataStream, const std::string &d
     return dataStream;
 }
 
-//! Sequence containers
+// Sequence containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator <<(DataStream<DeviceType> &dataStream, const std::vector<ValueType> &data) noexcept -> DataStream<DeviceType> &
@@ -191,7 +185,7 @@ inline auto operator <<(DataStream<DeviceType> &dataStream, const std::list<Valu
     return dataStream;
 }
 
-//! Associative containers
+// Associative containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator <<(DataStream<DeviceType> &dataStream, const std::set<ValueType> &data) noexcept -> DataStream<DeviceType> &
@@ -246,7 +240,7 @@ inline auto operator <<(DataStream<DeviceType> &dataStream, const std::multimap<
     return dataStream;
 }
 
-//! Unordered associative containers
+// Unordered associative containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator <<(DataStream<DeviceType> &dataStream, const std::unordered_set<ValueType> &data) noexcept -> DataStream<DeviceType> &
@@ -301,9 +295,7 @@ inline auto operator <<(DataStream<DeviceType> &dataStream, const std::unordered
     return dataStream;
 }
 
-/*!
- *  DataStream read operators
- */
+// DataStream read operators
 template<typename DeviceType,
          typename DataType,
          typename std::enable_if<std::is_arithmetic<DataType>::value>::type ...Enabler>
@@ -372,7 +364,7 @@ inline auto operator >>(DataStream<DeviceType> &dataStream, std::string &data) n
     return dataStream;
 }
 
-//! Sequence containers
+// Sequence containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator >>(DataStream<DeviceType> &dataStream, std::vector<ValueType> &data) noexcept -> DataStream<DeviceType> &
@@ -475,7 +467,7 @@ inline auto operator >>(DataStream<DeviceType> &dataStream, std::list<ValueType>
     return dataStream;
 }
 
-//! Associative containers
+// Associative containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator >>(DataStream<DeviceType> &dataStream, std::set<ValueType> &data) noexcept -> DataStream<DeviceType> &
@@ -584,7 +576,7 @@ inline auto operator >>(DataStream<DeviceType> &dataStream, std::multimap<KeyTyp
     return dataStream;
 }
 
-//! Unordered associative containers
+// Unordered associative containers
 template<typename DeviceType,
          typename ValueType>
 inline auto operator >>(DataStream<DeviceType> &dataStream, std::unordered_set<ValueType> &data) noexcept -> DataStream<DeviceType> &

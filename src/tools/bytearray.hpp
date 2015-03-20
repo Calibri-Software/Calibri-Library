@@ -1,21 +1,19 @@
 #ifndef CALIBRI_TOOLS_BYTEARRAY_HPP
 #define CALIBRI_TOOLS_BYTEARRAY_HPP
 
-//! Std includes
+// Std includes
 #include <vector>
 #include <iostream>
 #include <algorithm>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 
 namespace Calibri {
 
 namespace Tools {
 
-/*!
- *  ByteArray class
- */
+// ByteArray class
 class ByteArray : public std::vector<char>
 {
 public:
@@ -45,9 +43,7 @@ public:
     static auto fromBase64(const ByteArray &data, bool *ok = nullptr) noexcept -> ByteArray;
 };
 
-/*!
- *  ByteArray inline methods
- */
+// ByteArray inline methods
 inline ByteArray::ByteArray(const char *data, sizeinfo size) :
     std::vector<char>(data, std::next(data, size))
 {
@@ -121,9 +117,7 @@ inline auto ByteArray::append(std::initializer_list<char> data) noexcept -> Byte
     return *this;
 }
 
-/*!
- *  Non-member operators
- */
+// Non-member operators
 inline auto operator +(const ByteArray &left, const ByteArray &right) noexcept -> ByteArray
 {
     ByteArray data { left };

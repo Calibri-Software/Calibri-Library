@@ -1,13 +1,13 @@
 #ifndef CALIBRI_TOOLS_METACAST_HPP
 #define CALIBRI_TOOLS_METACAST_HPP
 
-//! Std includes
+// Std includes
 #include <string>
 #include <cstring>
 #include <limits>
 #include <vector>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 #include "global/compilerdetection.hpp"
 #include "algorithms/startswith.hpp"
@@ -34,7 +34,7 @@ inline constexpr auto minus() noexcept -> DataType
 
 } // end namespace Internal
 
-//! Convert convertible types
+// Convert convertible types
 template<typename CastType,
          typename DataType,
          typename std::enable_if<std::is_convertible<DataType, CastType>::value>::type ...Enabler>
@@ -43,7 +43,7 @@ inline auto metaCast(DataType data) noexcept -> CastType
     return static_cast<CastType>(data);
 }
 
-//! Convert string/wstring to arithmetic types
+// Convert string/wstring to arithmetic types
 template<typename CastType,
          uint8 Base = 10,
          typename DataType,
@@ -361,7 +361,7 @@ inline auto metaCast(const DataType &data, bool *ok = nullptr) noexcept -> CastT
     }
 }
 
-//! Convert arithmetic types to string
+// Convert arithmetic types to string
 template<typename CastType,
          typename DataType,
          typename std::enable_if<(std::is_same<CastType, std::string>::value
@@ -383,7 +383,7 @@ inline auto metaCast(DataType data, bool *ok = nullptr) noexcept -> CastType
     }
 }
 
-//! Convert arithmetic types to wstring
+// Convert arithmetic types to wstring
 template<typename CastType,
          typename DataType,
          typename std::enable_if<(std::is_same<CastType, std::wstring>::value
@@ -405,7 +405,7 @@ inline auto metaCast(DataType data, bool *ok = nullptr) noexcept -> CastType
     }
 }
 
-//! Convert byte string to wstring
+// Convert byte string to wstring
 template<typename CastType,
          typename std::enable_if<std::is_same<CastType, std::wstring>::value>::type ...Enabler>
 inline auto metaCast(const char *data, bool *ok = nullptr) noexcept -> CastType
@@ -435,7 +435,7 @@ inline auto metaCast(const char *data, bool *ok = nullptr) noexcept -> CastType
     return { buffer.data(), size };
 }
 
-//! Convert wide string to string
+// Convert wide string to string
 template<typename CastType,
          typename std::enable_if<std::is_same<CastType, std::string>::value>::type ...Enabler>
 inline auto metaCast(const wchar *data, bool *ok = nullptr) noexcept -> CastType
@@ -465,7 +465,7 @@ inline auto metaCast(const wchar *data, bool *ok = nullptr) noexcept -> CastType
     return { buffer.data(), size };
 }
 
-//! Convert string to wstring
+// Convert string to wstring
 template<typename CastType,
          typename std::enable_if<std::is_same<CastType, std::wstring>::value>::type ...Enabler>
 inline auto metaCast(const std::string &data, bool *ok = nullptr) noexcept -> CastType
@@ -473,7 +473,7 @@ inline auto metaCast(const std::string &data, bool *ok = nullptr) noexcept -> Ca
     return metaCast<CastType>(data.data(), ok);
 }
 
-//! Convert wstring to string
+// Convert wstring to string
 template<typename CastType,
          typename std::enable_if<std::is_same<CastType, std::string>::value>::type ...Enabler>
 inline auto metaCast(const std::wstring &data, bool *ok = nullptr) noexcept -> CastType

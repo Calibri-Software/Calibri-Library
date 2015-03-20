@@ -1,7 +1,7 @@
 #ifndef CALIBRI_ALGORITHMS_TRIM_HPP
 #define CALIBRI_ALGORITHMS_TRIM_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 
 namespace Calibri {
@@ -10,9 +10,7 @@ namespace Algorithms {
 
 namespace Internal {
 
-/*!
- *  IsSpace class
- */
+// IsSpace class
 class IsSpace
 {
 public:
@@ -23,9 +21,7 @@ private:
     std::locale m_locale {};
 };
 
-/*!
- *  IsSpace inline methods
- */
+// IsSpace inline methods
 template<typename DataType>
 inline auto IsSpace::operator ()(DataType data) const noexcept -> bool
 {

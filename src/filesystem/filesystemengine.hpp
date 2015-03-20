@@ -1,13 +1,13 @@
 #ifndef CALIBRI_FILESYSTEM_FILESYSTEMENGINE_HPP
 #define CALIBRI_FILESYSTEM_FILESYSTEMENGINE_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "systemapi.hpp"
 #include "fileinfo.hpp"
 #include "directoryiterator.hpp"
 #include "tools/metacast.hpp"
 
-//! System includes
+// System includes
 #if defined(OS_LINUX) || defined(OS_UNIX)
 #   include <sys/stat.h>
 #   include <unistd.h>

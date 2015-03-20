@@ -1,7 +1,7 @@
 #ifndef CALIBRI_SIGNALS_ISFUNCTIONOBJECTCALLABLE_HPP
 #define CALIBRI_SIGNALS_ISFUNCTIONOBJECTCALLABLE_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "iscallable.hpp"
 #include "tools/disableconstructible.hpp"
 
@@ -11,9 +11,7 @@ namespace Signals {
 
 namespace Internal {
 
-/*!
- *  IsFunctionObjectCallable class
- */
+// IsFunctionObjectCallable class
 template<typename FunctionObjectType,
          typename ReturnType,
          typename ...ArgumentsType>

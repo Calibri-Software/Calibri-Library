@@ -1,10 +1,10 @@
 #ifndef CALIBRI_SIGNALS_CONNECTION_HPP
 #define CALIBRI_SIGNALS_CONNECTION_HPP
 
-//! Std includes
+// Std includes
 #include <mutex>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "enablesignal.hpp"
 #include "memberfunctionwrapper.hpp"
 #include "issignalcallable.hpp"
@@ -26,14 +26,12 @@ static SpinLock globalContext {};
 
 namespace Internal {
 
-//! Aliases
+// Aliases
 template<typename ReturnType,
          typename ...ArgumentsType>
 using Function = ReturnType (ArgumentsType ...);
 
-/*!
- *  Connection class
- */
+// Connection class
 template<typename ...>
 class Connection : private DisableConstructible
 {
@@ -43,6 +41,7 @@ template<typename ReturnType,
          typename ...ArgumentsType>
 class Connection<Function<ReturnType, ArgumentsType ...>> : private DisableCopyable
 {
+    // Aliases
     using Invoker = ReturnType (*)(void *, ArgumentsType &&...) noexcept;
     using Deleter = void (*)(void *) noexcept;
     using Comparator = bool (*)(void *, void *) noexcept;
@@ -93,9 +92,7 @@ private:
     Comparator m_comparator {};
 };
 
-/*!
- *  Connection inline methods
- */
+// Connection inline methods
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,

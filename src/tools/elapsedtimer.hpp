@@ -1,17 +1,17 @@
 #ifndef CALIBRI_TOOLS_ELAPSEDTIMER_HPP
 #define CALIBRI_TOOLS_ELAPSEDTIMER_HPP
 
-//! Std includes
+// Std includes
 #include <chrono>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/types.hpp"
 
 namespace Calibri {
 
 namespace Tools {
 
-//! Enumerations
+// Enumerations
 enum class ElapsedTimerMetric : uint8 {
     Hours,
     Minutes,
@@ -67,14 +67,10 @@ inline auto duration(const std::chrono::steady_clock::time_point &start, const s
 
 } // end namespace Internal
 
-/*!
- *  ElapsedTimer class
- */
+// ElapsedTimer class
 class ElapsedTimer
 {
 public:
-    constexpr ElapsedTimer() noexcept = default;
-
     auto start() noexcept -> void;
     auto reset() noexcept -> void;
 
@@ -91,9 +87,7 @@ private:
     std::chrono::steady_clock::time_point m_startPoint {};
 };
 
-/*!
- *  ElapsedTimer inline methods
- */
+// ElapsedTimer inline methods
 inline auto ElapsedTimer::start() noexcept -> void
 {
     m_startPoint = std::chrono::steady_clock::now();

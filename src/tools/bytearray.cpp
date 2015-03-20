@@ -1,7 +1,7 @@
-//! Self includes
+// Self includes
 #include "bytearray.hpp"
 
-//! Std includes
+// Std includes
 #include <array>
 
 namespace Calibri {

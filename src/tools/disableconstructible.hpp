@@ -1,16 +1,14 @@
 #ifndef CALIBRI_TOOLS_DISABLECONSTRUCTIBLE_HPP
 #define CALIBRI_TOOLS_DISABLECONSTRUCTIBLE_HPP
 
-//! Calibri-Library Includes
+// Calibri-Library Includes
 #include "disablecopyable.hpp"
 
 namespace Calibri {
 
 namespace Tools {
 
-/*!
- *  DisableCopyable class
- */
+// DisableCopyable class
 class DisableConstructible : private DisableCopyable
 {
 private:

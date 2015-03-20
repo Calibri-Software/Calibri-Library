@@ -1,7 +1,7 @@
 #ifndef CALIBRI_SIGNALS_LASTVALUE_HPP
 #define CALIBRI_SIGNALS_LASTVALUE_HPP
 
-//! Std includes
+// Std includes
 #include <utility>
 
 namespace Calibri {
@@ -10,9 +10,7 @@ namespace Signals {
 
 namespace Internal {
 
-/*!
- *  LastValue class
- */
+// LastValue class
 template<typename ValueType>
 class LastValue
 {
@@ -24,9 +22,7 @@ private:
     ValueType m_value {};
 };
 
-/*!
- *  LastValue inline methods
- */
+// LastValue inline methods
 template<typename ValueType>
 inline auto LastValue<ValueType>::operator ()(ValueType &&value) noexcept -> bool
 {

@@ -1,13 +1,7 @@
 #ifndef CALIBRI_GLOBAL_COMPILERDETECTION_HPP
 #define CALIBRI_GLOBAL_COMPILERDETECTION_HPP
 
-//! Defines
-/*!
- *  The compiler, must be one of: (CC_x)
- *
- *   GNU        - GNU C++
- *   CLANG      - C++ front-end for the LLVM compiler
- */
+// Defines
 #if defined(__GNUC__)
 #   define CC_GNU
 

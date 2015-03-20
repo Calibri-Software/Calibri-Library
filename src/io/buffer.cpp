@@ -1,4 +1,4 @@
-//! Self includes
+// Self includes
 #include "buffer.hpp"
 
 namespace Calibri {

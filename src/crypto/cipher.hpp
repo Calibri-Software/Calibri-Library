@@ -1,13 +1,13 @@
 #ifndef CALIBRI_CRYPTO_CIPHER_HPP
 #define CALIBRI_CRYPTO_CIPHER_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! OpenSSL includes
+// OpenSSL includes
 #include <openssl/evp.h>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "global/compilerdetection.hpp"
 #include "tools/bytearray.hpp"
 
@@ -15,7 +15,7 @@ namespace Calibri {
 
 namespace Crypto {
 
-//! Enumerations
+// Enumerations
 enum class CipherAlgorithm : uint8 {
     DESecb,
     DEScbc,

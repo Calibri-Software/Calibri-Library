@@ -1,7 +1,7 @@
 #ifndef CALIBRI_SIGNALS_ISSIGNALCALLABLE_HPP
 #define CALIBRI_SIGNALS_ISSIGNALCALLABLE_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "iscallable.hpp"
 #include "tools/disableconstructible.hpp"
 
@@ -9,15 +9,13 @@ namespace Calibri {
 
 namespace Signals {
 
-//! Forward declarations
+// Forward declarations
 template<typename ...>
 class Signal;
 
 namespace Internal {
 
-/*!
- *  IsSignal class
- */
+// IsSignal class
 template<typename ...>
 class IsSignal : private DisableConstructible
 {
@@ -33,9 +31,7 @@ public:
     static constexpr auto value = true;
 };
 
-/*!
- *  IsSignalCallable class
- */
+// IsSignalCallable class
 template<typename SignalType,
          typename ReturnType,
          typename ...ArgumentsType>

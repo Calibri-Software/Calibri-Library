@@ -1,7 +1,7 @@
 #ifndef CALIBRI_IO_BUFFER_HPP
 #define CALIBRI_IO_BUFFER_HPP
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "iorandomaccessinterface.hpp"
 #include "tools/bytearray.hpp"
 
@@ -9,9 +9,7 @@ namespace Calibri {
 
 namespace Io {
 
-/*!
- *  Buffer class
- */
+// Buffer class
 class Buffer : public IORandomAccessInterface
 {
 public:
@@ -50,9 +48,7 @@ private:
     ByteArray m_byteArray {};
 };
 
-/*!
- *  Buffer inline methods
- */
+// Buffer inline methods
 inline Buffer::Buffer(const ByteArray &data) :
     m_byteArray { data }
 {
@@ -107,9 +103,7 @@ inline auto Buffer::size() const noexcept -> sizeinfo
     return m_byteArray.size();
 }
 
-/*!
- *  Non-member operators
- */
+// Non-member operators
 inline auto operator <<(std::ostream &stream, const Buffer &data) noexcept -> std::ostream &
 {
     return stream << data.data();

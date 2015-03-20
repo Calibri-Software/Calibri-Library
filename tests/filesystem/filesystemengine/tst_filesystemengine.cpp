@@ -1,8 +1,8 @@
-//! Qt includes
+// Qt includes
 #include <QtTest/QtTest>
 #include <QDir>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include <filesystem/filesystemengine.hpp>
 #include <tools/metacast.hpp>
 

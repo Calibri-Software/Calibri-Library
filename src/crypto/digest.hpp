@@ -1,13 +1,13 @@
 #ifndef CALIBRI_CRYPTO_DIGEST_HPP
 #define CALIBRI_CRYPTO_DIGEST_HPP
 
-//! Std includes
+// Std includes
 #include <type_traits>
 
-//! OpenSSL includes
+// OpenSSL includes
 #include <openssl/evp.h>
 
-//! Calibri-Library includes
+// Calibri-Library includes
 #include "tools/bytearray.hpp"
 #include "tools/metacast.hpp"
 
@@ -15,7 +15,7 @@ namespace Calibri {
 
 namespace Crypto {
 
-//! Enumerations
+// Enumerations
 enum class DigestAlgorithm : uint8 {
     MD2,
     MD4,
