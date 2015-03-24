@@ -12,14 +12,14 @@ namespace Algorithms {
 namespace Internal {
 
 template<typename DataType,
-         typename std::enable_if<std::is_same<DataType, char>::value>::type ...Enabler>
+         typename std::enable_if<std::is_same<DataType, char>::value>::type * = nullptr>
 inline constexpr auto space() noexcept -> DataType
 {
     return ' ';
 }
 
 template<typename DataType,
-         typename std::enable_if<std::is_same<DataType, wchar>::value>::type ...Enabler>
+         typename std::enable_if<std::is_same<DataType, wchar>::value>::type * = nullptr>
 inline constexpr auto space() noexcept -> DataType
 {
     return L' ';
@@ -30,7 +30,7 @@ inline constexpr auto space() noexcept -> DataType
 template<typename DataType,
          typename std::enable_if<(std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value)>::type * = nullptr>
 inline auto simplify(DataType &data) noexcept -> void
 {
     using CharacterType = typename DataType::value_type;

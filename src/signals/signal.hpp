@@ -38,27 +38,27 @@ public:
 
     template<typename MarshallerType,
              typename std::enable_if<(Internal::IsFunctionObjectCallable<typename std::decay<MarshallerType>::type, bool, ReturnType>::value
-                                     && std::is_convertible<MarshallerType, ReturnType>::value)>::type ...Enabler>
+                                     && std::is_convertible<MarshallerType, ReturnType>::value)>::type * = nullptr>
     auto operator ()(MarshallerType &&marshaller, ArgumentsType &&...arguments) noexcept -> ReturnType;
 
     template<typename MarshallerType = Internal::LastValue<ReturnType>,
-             typename std::enable_if<std::is_convertible<MarshallerType, ReturnType>::value>::type ...Enabler>
+             typename std::enable_if<std::is_convertible<MarshallerType, ReturnType>::value>::type * = nullptr>
     auto operator ()(ArgumentsType &&...arguments) noexcept -> ReturnType;
 
     template<typename MarshallerType = Internal::LastValue<ReturnType>,
-             typename std::enable_if<!std::is_convertible<MarshallerType, ReturnType>::value>::type ...Enabler>
+             typename std::enable_if<!std::is_convertible<MarshallerType, ReturnType>::value>::type * = nullptr>
     auto operator ()(ArgumentsType &&...arguments) noexcept -> ReturnType;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
              typename CallableType,
              typename std::enable_if<(Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type * = nullptr>
     auto connect(CallableType *callable) noexcept -> ConnectionType *;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
              typename CallableType,
              typename std::enable_if<(Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type * = nullptr>
     auto connect(CallableType *callable) noexcept -> ConnectionType *;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
@@ -66,7 +66,7 @@ public:
              typename CallableType,
              typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
                                      && std::is_base_of<EnableSignal, ObjectType>::value
-                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type * = nullptr>
     auto connect(ObjectType *object, CallableType callable) noexcept -> ConnectionType *;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
@@ -74,37 +74,37 @@ public:
              typename CallableType,
              typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
                                      && std::is_base_of<EnableSignal, ObjectType>::value
-                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type * = nullptr>
     auto connect(ObjectType *object, CallableType callable) noexcept -> ConnectionType *;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
              typename CallableType,
              typename std::enable_if<(Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type * = nullptr>
     auto connect(CallableType callable) noexcept -> ConnectionType *;
 
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
              typename CallableType,
              typename std::enable_if<(Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                     && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type * = nullptr>
     auto connect(CallableType callable) noexcept -> ConnectionType *;
 
     template<typename CallableType,
-             typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     auto connect(CallableType &&callable) noexcept -> ConnectionType *;
 
     template<typename CallableType,
-             typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     auto disconnect(CallableType *callable) noexcept -> bool;
 
     template<typename ObjectType,
              typename CallableType,
              typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
-                                     && std::is_base_of<EnableSignal, ObjectType>::value)>::type ...Enabler>
+                                     && std::is_base_of<EnableSignal, ObjectType>::value)>::type * = nullptr>
     auto disconnect(ObjectType *object, CallableType callable) noexcept -> bool;
 
     template<typename CallableType,
-             typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     auto disconnect(CallableType callable) noexcept -> bool;
 
     auto disconnect(ConnectionType *signalConnection) noexcept -> bool;
@@ -136,7 +136,7 @@ template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename MarshallerType,
          typename std::enable_if<(Internal::IsFunctionObjectCallable<typename std::decay<MarshallerType>::type, bool, ReturnType>::value
-                                 && std::is_convertible<MarshallerType, ReturnType>::value)>::type ...Enabler>
+                                 && std::is_convertible<MarshallerType, ReturnType>::value)>::type *>
 auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::operator ()(MarshallerType &&marshaller, ArgumentsType &&...arguments) noexcept -> ReturnType
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -152,7 +152,7 @@ auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::operator ()(Mars
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename MarshallerType,
-         typename std::enable_if<std::is_convertible<MarshallerType, ReturnType>::value>::type ...Enabler>
+         typename std::enable_if<std::is_convertible<MarshallerType, ReturnType>::value>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::operator ()(ArgumentsType &&...arguments) noexcept -> ReturnType
 {
     return (*this)(MarshallerType(), std::forward<ArgumentsType>(arguments) ...);
@@ -161,7 +161,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::operator 
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename MarshallerType,
-         typename std::enable_if<!std::is_convertible<MarshallerType, ReturnType>::value>::type ...Enabler>
+         typename std::enable_if<!std::is_convertible<MarshallerType, ReturnType>::value>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::operator ()(ArgumentsType &&...arguments) noexcept -> ReturnType
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -177,7 +177,7 @@ template<typename ReturnType,
 template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(CallableType *callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -194,7 +194,7 @@ template<typename ReturnType,
 template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(CallableType *callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -220,7 +220,7 @@ template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
                                  && std::is_base_of<EnableSignal, ObjectType>::value
-                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(ObjectType *object, CallableType callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -239,7 +239,7 @@ template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
                                  && std::is_base_of<EnableSignal, ObjectType>::value
-                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(ObjectType *object, CallableType callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -263,7 +263,7 @@ template<typename ReturnType,
 template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::DefaultConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(CallableType callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -278,7 +278,7 @@ template<typename ReturnType,
 template<SignalConnectionMode ConnectionMode,
          typename CallableType,
          typename std::enable_if<(Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value
-                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type ...Enabler>
+                                 && ConnectionMode == SignalConnectionMode::UniqueConnection)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(CallableType callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -298,7 +298,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(CallableType &&callable) noexcept -> ConnectionType *
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -311,7 +311,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::disconnect(CallableType *callable) noexcept -> bool
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -336,7 +336,7 @@ template<typename ReturnType,
 template<typename ObjectType,
          typename CallableType,
          typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
-                                 && std::is_base_of<EnableSignal, ObjectType>::value)>::type ...Enabler>
+                                 && std::is_base_of<EnableSignal, ObjectType>::value)>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::disconnect(ObjectType *object, CallableType callable) noexcept -> bool
 {
     std::lock_guard<SpinLock> locker { m_context };
@@ -359,7 +359,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::disconnec
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type *>
 inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::disconnect(CallableType callable) noexcept -> bool
 {
     std::lock_guard<SpinLock> locker { m_context };

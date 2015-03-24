@@ -36,7 +36,7 @@ inline auto ToLower::operator ()(DataType data) const noexcept -> DataType
 template<typename DataType,
          typename std::enable_if<(std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value)>::type * = nullptr>
 inline auto lower(DataType &data) noexcept -> void
 {
     std::transform(std::begin(data), std::end(data), std::begin(data), Internal::ToLower());

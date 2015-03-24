@@ -42,27 +42,27 @@ template<typename ReturnType,
 class Connection<Function<ReturnType, ArgumentsType ...>> : private DisableCopyable
 {
     // Aliases
-    using Invoker = ReturnType (*)(void *, ArgumentsType &&...) noexcept;
-    using Deleter = void (*)(void *) noexcept;
-    using Comparator = bool (*)(void *, void *) noexcept;
+    using Invoker = ReturnType (*)(void *, ArgumentsType &&...);
+    using Deleter = void (*)(void *);
+    using Comparator = bool (*)(void *, void *);
 
 public:
     template<typename CallableType,
-             typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     Connection(CallableType *callable) noexcept;
 
     template<typename CallableType,
-             typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     Connection(CallableType &&callable) noexcept;
 
     template<typename CallableType,
-             typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+             typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type * = nullptr>
     Connection(CallableType callable) noexcept;
 
     template<typename ObjectType,
              typename CallableType,
              typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
-                                     && std::is_base_of<EnableSignal, ObjectType>::value)>::type ...Enabler>
+                                     && std::is_base_of<EnableSignal, ObjectType>::value)>::type * = nullptr>
     Connection(ObjectType *object, CallableType callable) noexcept;
 
     virtual ~Connection() noexcept;
@@ -96,7 +96,7 @@ private:
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type *>
 inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(CallableType *callable) noexcept
 {
     using SignalType = CallableType;
@@ -110,7 +110,7 @@ inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(CallableT
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsFunctionObjectCallable<typename std::decay<CallableType>::type, ReturnType, ArgumentsType ...>::value>::type *>
 inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(CallableType &&callable) noexcept
 {
     using FunctionObjectType = typename std::decay<CallableType>::type;
@@ -129,7 +129,7 @@ inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(CallableT
 template<typename ReturnType,
          typename ...ArgumentsType>
 template<typename CallableType,
-         typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type ...Enabler>
+         typename std::enable_if<Internal::IsFunctionCallable<CallableType, ReturnType, ArgumentsType ...>::value>::type *>
 inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(CallableType callable) noexcept
 {
     using FunctionType = CallableType;
@@ -147,7 +147,7 @@ template<typename ReturnType,
 template<typename ObjectType,
          typename CallableType,
          typename std::enable_if<(Internal::IsMemberFunctionCallable<CallableType, ReturnType, ObjectType, ArgumentsType ...>::value
-                                 && std::is_base_of<EnableSignal, ObjectType>::value)>::type ...Enabler>
+                                 && std::is_base_of<EnableSignal, ObjectType>::value)>::type *>
 inline Connection<Function<ReturnType, ArgumentsType ...>>::Connection(ObjectType *object, CallableType callable) noexcept
 {
     using MemberFunctionType = Internal::MemberFunctionWrapper<CallableType>;

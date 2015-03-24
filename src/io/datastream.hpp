@@ -34,7 +34,7 @@ static constexpr char nullTerminator { '\0' };
 
 // DataStream class
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type * = nullptr>
 class DataStream : private DisableCopyable
 {
 public:
@@ -56,37 +56,37 @@ private:
 
 // DataStream inline methods
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
-inline DataStream<DeviceType, Enabler ...>::DataStream(DeviceType *device) noexcept :
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type *Enabler>
+inline DataStream<DeviceType, Enabler>::DataStream(DeviceType *device) noexcept :
     DisableCopyable(),
     m_device { device }
 {
 }
 
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
-inline auto DataStream<DeviceType, Enabler ...>::device() const noexcept -> DeviceType *
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type *Enabler>
+inline auto DataStream<DeviceType, Enabler>::device() const noexcept -> DeviceType *
 {
     return m_device;
 }
 
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
-inline auto DataStream<DeviceType, Enabler ...>::status() const noexcept -> DataStreamStatus
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type *Enabler>
+inline auto DataStream<DeviceType, Enabler>::status() const noexcept -> DataStreamStatus
 {
     return m_status;
 }
 
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
-inline auto DataStream<DeviceType, Enabler ...>::setStatus(DataStreamStatus status) noexcept -> void
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type *Enabler>
+inline auto DataStream<DeviceType, Enabler>::setStatus(DataStreamStatus status) noexcept -> void
 {
     m_status = status;
 }
 
 template<typename DeviceType,
-         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type ...Enabler>
-inline auto DataStream<DeviceType, Enabler ...>::resetStatus() noexcept -> void
+         typename std::enable_if<std::is_base_of<IOInterface, DeviceType>::value>::type *Enabler>
+inline auto DataStream<DeviceType, Enabler>::resetStatus() noexcept -> void
 {
     m_status = DataStreamStatus::Ok;
 }
@@ -94,7 +94,7 @@ inline auto DataStream<DeviceType, Enabler ...>::resetStatus() noexcept -> void
 // DataStream write operators
 template<typename DeviceType,
          typename DataType,
-         typename std::enable_if<std::is_arithmetic<DataType>::value>::type ...Enabler>
+         typename std::enable_if<std::is_arithmetic<DataType>::value>::type * = nullptr>
 inline auto operator <<(DataStream<DeviceType> &dataStream, DataType data) noexcept -> DataStream<DeviceType> &
 {
     if (dataStream.status() != DataStreamStatus::Ok)
@@ -298,7 +298,7 @@ inline auto operator <<(DataStream<DeviceType> &dataStream, const std::unordered
 // DataStream read operators
 template<typename DeviceType,
          typename DataType,
-         typename std::enable_if<std::is_arithmetic<DataType>::value>::type ...Enabler>
+         typename std::enable_if<std::is_arithmetic<DataType>::value>::type * = nullptr>
 inline auto operator >>(DataStream<DeviceType> &dataStream, DataType &data) noexcept -> DataStream<DeviceType> &
 {
     data = 0;

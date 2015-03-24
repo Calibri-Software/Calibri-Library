@@ -22,7 +22,7 @@ template<typename ContainerType,
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
                                  || std::is_same<DataType, ByteArray>::value)
-                                 && std::is_convertible<typename std::result_of<PredicateType(typename DataType::value_type)>::type, bool>::value)>::type ...Enabler>
+                                 && std::is_convertible<typename std::result_of<PredicateType(typename DataType::value_type)>::type, bool>::value)>::type * = nullptr>
 inline auto split(ContainerType &container, const DataType &data, PredicateType predicate) noexcept -> void
 {
     container.clear();
@@ -60,7 +60,7 @@ template<typename ContainerType,
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
                                  || std::is_same<DataType, ByteArray>::value)
-                                 && std::is_convertible<typename std::result_of<PredicateType(typename DataType::value_type)>::type, bool>::value)>::type ...Enabler>
+                                 && std::is_convertible<typename std::result_of<PredicateType(typename DataType::value_type)>::type, bool>::value)>::type * = nullptr>
 inline auto split(ContainerType &container, const DataType &data, PredicateType predicate) noexcept -> void
 {
     container.clear();
@@ -101,7 +101,7 @@ template<typename ContainerType,
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
                                  || std::is_same<DataType, ByteArray>::value)
-                                 && std::is_same<SeparatorType, typename DataType::value_type>::value)>::type ...Enabler>
+                                 && std::is_same<SeparatorType, typename DataType::value_type>::value)>::type * = nullptr>
 inline auto split(ContainerType &container, const DataType &data, SeparatorType separator) noexcept -> void
 {
     split(container, data, [ separator ](SeparatorType character) noexcept {
@@ -116,7 +116,7 @@ template<typename ContainerType,
                                  || std::is_same<ContainerType, std::list<DataType>>::value)
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value))>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value))>::type * = nullptr>
 inline auto split(ContainerType &container, const DataType &data, const DataType &separator) noexcept -> void
 {
     container.clear();
@@ -154,7 +154,7 @@ template<typename ContainerType,
          typename std::enable_if<(std::is_same<ContainerType, std::forward_list<DataType>>::value
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value))>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value))>::type * = nullptr>
 inline auto split(ContainerType &container, const DataType &data, const DataType &separator) noexcept -> void
 {
     container.clear();

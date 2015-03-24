@@ -33,7 +33,7 @@ inline auto IsSpace::operator ()(DataType data) const noexcept -> bool
 template<typename DataType,
          typename std::enable_if<(std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value)>::type * = nullptr>
 inline auto trim(DataType &data) noexcept -> void
 {
     auto it = std::find_if_not(std::begin(data), std::end(data), Internal::IsSpace());

@@ -92,7 +92,7 @@ enum class CipherMode : uint8 {
 namespace Internal {
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DESecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DESecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -105,7 +105,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DEScbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DEScbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -118,7 +118,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DEScfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DEScfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -131,7 +131,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DESofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DESofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -144,7 +144,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES2ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES2ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -157,7 +157,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES2cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES2cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -170,7 +170,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES2cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES2cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -183,7 +183,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES2ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES2ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -196,7 +196,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES3ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES3ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -209,7 +209,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES3cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES3cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -222,7 +222,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES3cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES3cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -235,7 +235,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DES3ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DES3ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -248,7 +248,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::DESXcbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::DESXcbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_DES)
@@ -261,7 +261,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC4>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC4>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC4)
@@ -274,7 +274,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_IDEA)
@@ -287,7 +287,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAcbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAcbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_IDEA)
@@ -300,7 +300,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAcfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAcfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_IDEA)
@@ -313,7 +313,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::IDEAofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_IDEA)
@@ -326,7 +326,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC2ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC2ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC2)
@@ -339,7 +339,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC2cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC2cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC2)
@@ -352,7 +352,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC2cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC2cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC2)
@@ -365,7 +365,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC2ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC2ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC2)
@@ -378,7 +378,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::BFecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::BFecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_BF)
@@ -391,7 +391,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::BFcbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::BFcbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_BF)
@@ -404,7 +404,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::BFcfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::BFcfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_BF)
@@ -417,7 +417,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::BFofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::BFofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_BF)
@@ -430,7 +430,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAST)
@@ -443,7 +443,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAST)
@@ -456,7 +456,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAST)
@@ -469,7 +469,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAST5ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAST)
@@ -482,7 +482,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC5ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC5ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC5)
@@ -495,7 +495,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC5cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC5cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC5)
@@ -508,7 +508,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC5cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC5cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC5)
@@ -521,7 +521,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::RC5ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::RC5ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_RC5)
@@ -534,7 +534,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -547,7 +547,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES128cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES128cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -560,7 +560,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES128cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES128cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -573,7 +573,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -586,7 +586,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ctr>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES128ctr>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -599,7 +599,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -612,7 +612,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES192cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES192cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -625,7 +625,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES192cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES192cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -638,7 +638,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -651,7 +651,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ctr>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES192ctr>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -664,7 +664,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -677,7 +677,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES256cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES256cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -690,7 +690,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES256cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES256cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -703,7 +703,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -716,7 +716,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ctr>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::AES256ctr>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_AES)
@@ -729,7 +729,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -742,7 +742,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -755,7 +755,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -768,7 +768,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA128ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -781,7 +781,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -794,7 +794,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -807,7 +807,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -820,7 +820,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA192ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -833,7 +833,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256ecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256ecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -846,7 +846,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256cbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256cbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -859,7 +859,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256cfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256cfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -872,7 +872,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256ofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::CAMELLIA256ofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_CAMELLIA)
@@ -885,7 +885,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDecb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDecb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_SEED)
@@ -898,7 +898,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDcbc>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDcbc>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_SEED)
@@ -911,7 +911,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDcfb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDcfb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_SEED)
@@ -924,7 +924,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 }
 
 template<CipherAlgorithm Algorithm,
-         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDofb>::type ...Enabler>
+         typename std::enable_if<Algorithm == CipherAlgorithm::SEEDofb>::type * = nullptr>
 auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 {
 #if !defined(OPENSSL_NO_SEED)
@@ -940,7 +940,7 @@ auto cipherAlgorithm() noexcept -> const EVP_CIPHER *
 
 template<CipherAlgorithm Type,
          CipherMode Mode,
-         typename std::enable_if<Mode == CipherMode::Encrypt>::type ...Enabler>
+         typename std::enable_if<Mode == CipherMode::Encrypt>::type * = nullptr>
 auto cipher(const ByteArray &data, const ByteArray &key, const ByteArray &iv, bool *ok = nullptr) noexcept -> ByteArray
 {
     int32 processedBytes {};
@@ -1003,7 +1003,7 @@ auto cipher(const ByteArray &data, const ByteArray &key, const ByteArray &iv, bo
 
 template<CipherAlgorithm Type,
          CipherMode Mode,
-         typename std::enable_if<Mode == CipherMode::Decrypt>::type ...Enabler>
+         typename std::enable_if<Mode == CipherMode::Decrypt>::type * = nullptr>
 auto cipher(const ByteArray &data, const ByteArray &key, const ByteArray &iv, bool *ok = nullptr) noexcept -> ByteArray
 {
     int32 processedBytes {};

@@ -53,7 +53,7 @@ inline auto IsAnyOf<DataType>::operator ()(typename DataType::value_type charact
 template<typename DataType,
          typename std::enable_if<(std::is_same<typename std::decay<DataType>::type, std::string>::value
                                  || std::is_same<typename std::decay<DataType>::type, std::wstring>::value
-                                 || std::is_same<typename std::decay<DataType>::type, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<typename std::decay<DataType>::type, ByteArray>::value)>::type * = nullptr>
 inline auto anyOf(DataType &&data) noexcept -> Internal::IsAnyOf<typename std::decay<DataType>::type>
 {
     return Internal::IsAnyOf<typename std::decay<DataType>::type>(std::forward<DataType>(data));
@@ -62,7 +62,7 @@ inline auto anyOf(DataType &&data) noexcept -> Internal::IsAnyOf<typename std::d
 template<typename DataType,
          typename std::enable_if<(std::is_same<typename std::decay<DataType>::type, std::string>::value
                                  || std::is_same<typename std::decay<DataType>::type, std::wstring>::value
-                                 || std::is_same<typename std::decay<DataType>::type, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<typename std::decay<DataType>::type, ByteArray>::value)>::type * = nullptr>
 inline auto anyOf(const DataType &data, DataType &&characters) noexcept -> bool
 {
     return std::any_of(std::begin(data), std::end(data), anyOf(std::forward<DataType>(characters)));

@@ -23,7 +23,7 @@ template<typename ContainerType,
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
                                  || std::is_same<DataType, ByteArray>::value)
-                                 && std::is_convertible<typename std::result_of<PredicateType(DataType)>::type, bool>::value)>::type ...Enabler>
+                                 && std::is_convertible<typename std::result_of<PredicateType(DataType)>::type, bool>::value)>::type * = nullptr>
 inline auto join(DataType &data, const ContainerType &container, const DataType &separator, PredicateType predicate) noexcept -> void
 {
     data.clear();
@@ -52,7 +52,7 @@ template<typename ContainerType,
                                  || std::is_same<ContainerType, std::list<DataType>>::value)
                                  && (std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value))>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value))>::type * = nullptr>
 inline auto join(DataType &data, const ContainerType &container, const DataType &separator) noexcept -> void
 {
     data.clear();

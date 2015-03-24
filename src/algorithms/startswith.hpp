@@ -14,7 +14,7 @@ namespace Algorithms {
 template<typename DataType,
          typename std::enable_if<(std::is_same<DataType, std::string>::value
                                  || std::is_same<DataType, std::wstring>::value
-                                 || std::is_same<DataType, ByteArray>::value)>::type ...Enabler>
+                                 || std::is_same<DataType, ByteArray>::value)>::type * = nullptr>
 inline auto startsWith(const DataType &data, const DataType &sector) noexcept -> bool
 {
     if (sector.size() > data.size())
