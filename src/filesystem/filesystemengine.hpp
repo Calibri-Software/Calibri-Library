@@ -250,6 +250,8 @@ inline auto copy(const std::string &from, const std::string &to) noexcept -> boo
     }
 }
 
+auto copyAll(const std::string &from, const std::string &to) noexcept -> uint32;
+
 } // end namespace FileSystem
 
 using FileSystem::isCaseSensitive;
@@ -271,6 +273,7 @@ using FileSystem::copySymbolicLink;
 using FileSystem::copyDirectory;
 using FileSystem::copyFile;
 using FileSystem::copy;
+using FileSystem::copyAll;
 
 } // end namespace Calibri
 

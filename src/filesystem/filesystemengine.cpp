@@ -318,29 +318,7 @@ auto removeAll(const std::string &path) noexcept -> uint32
 
             nativePath += entry;
 
-            fileInfo = FileInfo(nativePath);
-
-            switch (fileInfo.type()) {
-            case FileType::FileNotFound:
-                break;
-
-            case FileType::DirectoryFile:
-                count += removeAll(nativePath);
-
-                break;
-
-            case FileType::DirectorySymbolicLinkFile:
-                if (removeDirectory(nativePath))
-                    ++count;
-
-                break;
-
-            default:
-                if (removeFile(nativePath))
-                    ++count;
-
-                break;
-            }
+            count += removeAll(nativePath);
         }
 
         if (removeDirectory(path))
@@ -423,6 +401,67 @@ auto copyFile(const std::string &from, const std::string &to, bool failIfExists)
 
     return true;
 #endif
+}
+
+auto copyAll(const std::string &from, const std::string &to) noexcept -> uint32
+{
+    uint32 count {};
+
+    FileInfo fileInfo { from };
+
+    switch (fileInfo.type()) {
+    case FileType::FileNotFound:
+        break;
+
+    case FileType::DirectoryFile: {
+        if (copyDirectory(from, to))
+            ++count;
+        else
+            break;
+
+        DirectoryIterator it { from };
+
+        while (it.hasNext()) {
+            auto entry = it.next();
+
+            if (entry == Constants::dotEntry || entry == Constants::dotDotEntry)
+                continue;
+
+            auto nativeFrom = from;
+
+            if (!anyOf(Constants::separatorPattern)(nativeFrom.back()))
+                nativeFrom += nativeSeparator();
+
+            nativeFrom += entry;
+
+            auto nativeTo = to;
+
+            if (!anyOf(Constants::separatorPattern)(nativeTo.back()))
+                nativeTo += nativeSeparator();
+
+            nativeTo += entry;
+
+            count += copyAll(nativeFrom, nativeTo);
+        }
+
+        break;
+    }
+
+    case FileType::SymbolicLinkFile:
+    case FileType::DirectorySymbolicLinkFile:
+        if (copySymbolicLink(from, to))
+            ++count;
+
+        break;
+
+    default:
+        if (copyFile(from, to))
+            ++count;
+
+        break;
+    }
+
+    return count;
 }
 
 } // end namespace FileSystem

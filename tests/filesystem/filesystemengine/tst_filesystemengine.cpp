@@ -28,6 +28,7 @@ private slots:
     void testCopyDirectory();
     void testCopyFile();
     void testCopy();
+    void testCopyAll();
     void cleanupTestCase();
 };
 
@@ -298,6 +299,24 @@ void tst_FileSystemEngine::testCopy()
 
     QVERIFY(Calibri::remove("TestFile"));
     QVERIFY(Calibri::remove("TestFileNew"));
+}
+
+void tst_FileSystemEngine::testCopyAll()
+{
+    QFile file("TestFile");
+    QVERIFY(file.open(QIODevice::ReadWrite));
+    file.close();
+    QVERIFY(Calibri::createDirectories("TestDirectory/TestDirectory2"));
+    QVERIFY(Calibri::createDirectories("TestDirectory/TestDirectory3"));
+    QVERIFY(Calibri::createSymbolicLink("TestDirectory/TestSymbolicLink", "TestFile"));
+    QVERIFY(Calibri::createSymbolicLink("TestDirectory/TestDirectory2/TestSymbolicLink", "TestFile"));
+    QVERIFY(Calibri::createSymbolicLink("TestDirectory/TestDirectory3/TestSymbolicLink", "TestFile"));
+
+    QCOMPARE(Calibri::copyAll("TestFile", "TestFileNew"), Calibri::metaCast<uint32>(1));
+    QCOMPARE(Calibri::copyAll("TestDirectory", "TestDirectoryNew"), Calibri::metaCast<uint32>(6));
+
+    QCOMPARE(Calibri::removeAll("TestDirectory"), Calibri::metaCast<uint32>(6));
+    QCOMPARE(Calibri::removeAll("TestFile"), Calibri::metaCast<uint32>(1));
 }
 
 void tst_FileSystemEngine::cleanupTestCase()
