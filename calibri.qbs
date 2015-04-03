@@ -19,11 +19,15 @@ Project {
             if (qbs.buildVariant === "debug") {
                 return [
                             "-std=c++11",
+                            "-fno-rtti",
+                            "-pipe",
                             "-og"
                         ]
             } else {
                 return [
                             "-std=c++11",
+                            "-fno-rtti",
+                            "-pipe",
                             "-o3",
                             "-funroll-loops",
                             "-mtune=native",
