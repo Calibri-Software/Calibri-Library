@@ -186,7 +186,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 
     callable->connected(this);
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -210,7 +210,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 
     callable->connected(this);
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -229,7 +229,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(O
 
     object->connected(this);
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -255,7 +255,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(O
 
     object->connected(this);
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -270,7 +270,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 
     auto it = m_connections.emplace(std::end(m_connections), std::piecewise_construct, std::forward_as_tuple(callable), std::forward_as_tuple(nullptr));
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -292,7 +292,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 
     it = m_connections.emplace(std::end(m_connections), std::piecewise_construct, std::forward_as_tuple(callable), std::forward_as_tuple(nullptr));
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
@@ -305,7 +305,7 @@ inline auto Signal<Internal::Function<ReturnType, ArgumentsType ...>>::connect(C
 
     auto it = m_connections.emplace(std::end(m_connections), std::piecewise_construct, std::forward_as_tuple(std::forward<CallableType>(callable)), std::forward_as_tuple(nullptr));
 
-    return &((*it).first);
+    return std::addressof((*it).first);
 }
 
 template<typename ReturnType,
