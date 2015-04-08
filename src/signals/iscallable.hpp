@@ -15,10 +15,14 @@ class FunctionOrFunctionObjectCase
 {
 };
 
+static constexpr FunctionOrFunctionObjectCase FunctionOrFunctionObjectSelector {};
+
 // MemberFunctionPointerCase class
 class MemberFunctionCase
 {
 };
+
+static constexpr MemberFunctionCase MemberFunctionSelector {};
 
 template<typename CallableType,
          typename ReturnType,

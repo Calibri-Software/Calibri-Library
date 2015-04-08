@@ -18,7 +18,7 @@ template<typename FunctionType,
 class IsFunctionCallable : private DisableConstructible
 {
 public:
-    static constexpr auto value = (std::is_same<std::true_type, decltype(isCallable<FunctionType, ReturnType, ArgumentsType ...>(FunctionOrFunctionObjectCase()))>::value
+    static constexpr auto value = (std::is_same<std::true_type, decltype(isCallable<FunctionType, ReturnType, ArgumentsType ...>(FunctionOrFunctionObjectSelector))>::value
                                    && std::is_pointer<FunctionType>::value
                                    && std::is_function<typename std::remove_pointer<FunctionType>::type>::value);
 };

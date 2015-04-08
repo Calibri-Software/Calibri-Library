@@ -19,7 +19,7 @@ template<typename MemberFunctionType,
 class IsMemberFunctionCallable : private DisableConstructible
 {
 public:
-    static constexpr auto value = (std::is_same<std::true_type, decltype(isCallable<MemberFunctionType, ReturnType, ClassType, ArgumentsType ...>(MemberFunctionCase()))>::value
+    static constexpr auto value = (std::is_same<std::true_type, decltype(isCallable<MemberFunctionType, ReturnType, ClassType, ArgumentsType ...>(MemberFunctionSelector))>::value
                                    && std::is_member_function_pointer<MemberFunctionType>::value);
 };
 
