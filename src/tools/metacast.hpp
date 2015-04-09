@@ -20,14 +20,14 @@ namespace Internal {
 
 template<typename DataType,
          typename std::enable_if<std::is_same<DataType, char>::value>::type * = nullptr>
-inline constexpr auto minus() noexcept -> DataType
+static inline constexpr auto minus() noexcept -> DataType
 {
     return '-';
 }
 
 template<typename DataType,
          typename std::enable_if<std::is_same<DataType, wchar>::value>::type * = nullptr>
-inline constexpr auto minus() noexcept -> DataType
+static inline constexpr auto minus() noexcept -> DataType
 {
     return L'-';
 }

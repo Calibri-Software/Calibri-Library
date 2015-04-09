@@ -13,14 +13,14 @@ namespace Internal {
 
 template<typename DataType,
          typename std::enable_if<std::is_same<DataType, char>::value>::type * = nullptr>
-inline constexpr auto space() noexcept -> DataType
+static inline constexpr auto space() noexcept -> DataType
 {
     return ' ';
 }
 
 template<typename DataType,
          typename std::enable_if<std::is_same<DataType, wchar>::value>::type * = nullptr>
-inline constexpr auto space() noexcept -> DataType
+static inline constexpr auto space() noexcept -> DataType
 {
     return L' ';
 }

@@ -28,17 +28,17 @@ template<typename CallableType,
          typename ReturnType,
          typename ...ArgumentsType,
          typename std::enable_if<std::is_convertible<typename std::result_of<CallableType(ArgumentsType ...)>::type, ReturnType>::value>::type * = nullptr>
-constexpr auto isCallable(FunctionOrFunctionObjectCase) noexcept -> std::true_type;
+static constexpr auto isCallable(FunctionOrFunctionObjectCase) noexcept -> std::true_type;
 
 template<typename CallableType,
          typename ReturnType,
          typename ClassType,
          typename ...ArgumentsType,
          typename std::enable_if<std::is_convertible<typename std::result_of<CallableType(ClassType, ArgumentsType ...)>::type, ReturnType>::value>::type * = nullptr>
-constexpr auto isCallable(MemberFunctionCase) noexcept -> std::true_type;
+static constexpr auto isCallable(MemberFunctionCase) noexcept -> std::true_type;
 
 template<typename ...>
-constexpr auto isCallable(...) noexcept -> std::false_type;
+static constexpr auto isCallable(...) noexcept -> std::false_type;
 
 } // end namespace Internal
 

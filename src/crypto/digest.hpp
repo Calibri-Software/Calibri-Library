@@ -38,7 +38,7 @@ namespace Internal {
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::MD2>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_MD2)
     return EVP_md2();
@@ -51,7 +51,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::MD4>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_MD4)
     return EVP_md4();
@@ -64,7 +64,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::MD5>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_MD5)
     return EVP_md5();
@@ -77,7 +77,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA)
     return EVP_sha();
@@ -90,7 +90,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA1>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA)
     return EVP_sha1();
@@ -103,7 +103,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::DSS>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA)
     return EVP_dss();
@@ -116,7 +116,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::DSS1>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA)
     return EVP_dss1();
@@ -129,7 +129,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::ECDSA>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA)
     return EVP_ecdsa();
@@ -142,7 +142,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA224>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA256)
     return EVP_sha224();
@@ -155,7 +155,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA256>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA256)
     return EVP_sha256();
@@ -168,7 +168,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA384>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA512)
     return EVP_sha384();
@@ -181,7 +181,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::SHA512>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_SHA512)
     return EVP_sha512();
@@ -194,7 +194,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::MDC2>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_MDC2)
     return EVP_mdc2();
@@ -207,7 +207,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::RipeMD160>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_RIPEMD)
     return EVP_ripemd160();
@@ -220,7 +220,7 @@ auto digestAlgorithm() noexcept -> const EVP_MD *
 
 template<DigestAlgorithm Algorithm,
          typename std::enable_if<Algorithm == DigestAlgorithm::Whirlpool>::type * = nullptr>
-auto digestAlgorithm() noexcept -> const EVP_MD *
+static inline auto digestAlgorithm() noexcept -> const EVP_MD *
 {
 #if !defined(OPENSSL_NO_WHIRLPOOL)
     return EVP_whirlpool();

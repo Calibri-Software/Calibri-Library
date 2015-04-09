@@ -15,7 +15,7 @@ namespace Thread {
 
 namespace Internal {
 
-inline void yield(uint32 spin) noexcept
+static inline void yield(uint32 spin) noexcept
 {
     if (spin < 4) {
     } else if (spin < 16) {

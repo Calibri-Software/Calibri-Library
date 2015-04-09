@@ -25,42 +25,42 @@ namespace Internal {
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Hours>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::hours
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::hours
 {
     return std::chrono::duration_cast<std::chrono::hours>(finish - start);
 }
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Minutes>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::minutes
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::minutes
 {
     return std::chrono::duration_cast<std::chrono::minutes>(finish - start);
 }
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Seconds>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::seconds
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::seconds
 {
     return std::chrono::duration_cast<std::chrono::seconds>(finish - start);
 }
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Milliseconds>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::milliseconds
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::milliseconds
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
 }
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Microseconds>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::microseconds
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::microseconds
 {
     return std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 }
 
 template<ElapsedTimerMetric Metric,
          typename std::enable_if<Metric == ElapsedTimerMetric::Nanoseconds>::type * = nullptr>
-inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::nanoseconds
+static inline auto duration(const std::chrono::steady_clock::time_point &start, const std::chrono::steady_clock::time_point &finish) -> std::chrono::nanoseconds
 {
     return std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start);
 }
