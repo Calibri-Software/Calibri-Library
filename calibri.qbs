@@ -30,6 +30,7 @@ Project {
                             "-pipe",
                             "-o3",
                             "-funroll-loops",
+                            "-fsched-pressure",
                             "-mtune=native",
                             "-march=native"
                         ]

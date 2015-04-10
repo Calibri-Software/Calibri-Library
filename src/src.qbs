@@ -117,4 +117,13 @@ Product {
             "*.cpp"
         ]
     }
+
+    Group {
+        name: "Timers"
+        prefix: "timers/"
+        files: [
+            "*.hpp",
+            "*.cpp"
+        ]
+    }
 }
