@@ -22,6 +22,7 @@ class TrackableObject;
 class TrackableObjectObserver
 {
 public:
+    // Controls
     virtual auto destroyed(TrackableObject *trackableObject) noexcept -> void = 0;
 };
 
@@ -31,12 +32,12 @@ class TrackableObject
 public:
     virtual ~TrackableObject() noexcept;
 
+    // Controls
     auto connected(TrackableObjectObserver *observer) noexcept -> void;
     auto disconnected(TrackableObjectObserver *observer) noexcept -> bool;
 
 private:
     std::vector<std::pair<TrackableObjectObserver *, uint32>> m_observers {};
-
     SpinLock m_context {};
 };
 

@@ -15,13 +15,11 @@ namespace Io {
 class IOInterface
 {
 public:
+    // Controls
     auto read(char *data, sizeinfo size) noexcept -> sizeinfo;
-
     auto write(const char *data, sizeinfo size) noexcept -> sizeinfo;
     auto write(const char *data) noexcept -> sizeinfo;
-
     auto getChar(char *character) noexcept -> bool;
-
     auto putChar(char character) noexcept -> bool;
 
 protected:

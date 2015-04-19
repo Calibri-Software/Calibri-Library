@@ -40,17 +40,18 @@ class DataStream : private DisableCopyable
 public:
     DataStream(DeviceType *device) noexcept;
 
+    // Getters
     auto device() const noexcept -> DeviceType *;
-
     auto status() const noexcept -> DataStreamStatus;
 
+    // Setters
     auto setStatus(DataStreamStatus status) noexcept -> void;
 
+    // Controls
     auto resetStatus() noexcept -> void;
 
 private:
     DeviceType *m_device {};
-
     DataStreamStatus m_status { DataStreamStatus::Ok };
 };
 

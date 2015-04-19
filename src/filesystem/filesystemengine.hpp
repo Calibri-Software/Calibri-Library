@@ -222,7 +222,7 @@ inline auto copyDirectory(const std::string &from, const std::string &to) noexce
 #elif defined(OS_LINUX) || defined(OS_UNIX)    
     FileInfo fileInfo { from };
 
-    if (!fileInfo.exists())
+    if (!fileInfo.isExists())
         return false;
 
     return ::mkdir(to.data(), fileInfo.nativeAttributes()) == 0;

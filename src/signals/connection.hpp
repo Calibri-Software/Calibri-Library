@@ -67,10 +67,12 @@ public:
 
     virtual ~Connection() noexcept;
 
+    // Operators
     auto operator !=(const Connection &other) const noexcept -> bool;
     auto operator ==(const Connection &other) const noexcept -> bool;
     auto operator ()(ArgumentsType &&...arguments) const noexcept -> ReturnType;
 
+    // Controls
     template<typename CallableType>
     auto isConnectedTo(CallableType *callable) const noexcept -> bool;
 
@@ -86,7 +88,6 @@ public:
 
 private:
     void *m_callable {};
-
     Invoker m_invoker {};
     Deleter m_deleter {};
     Comparator m_comparator {};

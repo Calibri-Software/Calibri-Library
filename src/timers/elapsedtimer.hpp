@@ -12,6 +12,7 @@ namespace Timers {
 class ElapsedTimer
 {
 public:
+    // Controls
     auto start() noexcept -> void;
     auto reset() noexcept -> void;
 

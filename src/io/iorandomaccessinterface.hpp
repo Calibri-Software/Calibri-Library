@@ -12,11 +12,13 @@ namespace Io {
 class IORandomAccessInterface : public IOInterface
 {
 public:
+    // Getters
     auto pos() const noexcept -> sizeinfo;
+
+    // Controls
     auto seek(sizeinfo pos) noexcept -> bool;
     auto skip(sizeinfo size) noexcept -> bool;
     auto reset() noexcept -> void;
-
     auto readLine(char *data, sizeinfo size) noexcept -> sizeinfo;
 
     virtual auto canReadLine() const noexcept -> bool = 0;

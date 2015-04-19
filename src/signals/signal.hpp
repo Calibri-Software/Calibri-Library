@@ -36,6 +36,7 @@ class Signal<Internal::Function<ReturnType, ArgumentsType ...>> : private Disabl
 public:
     virtual ~Signal() noexcept;
 
+    // Operators
     template<typename MarshallerType,
              typename std::enable_if<(Internal::IsFunctionObjectCallable<typename std::decay<MarshallerType>::type, bool, ReturnType>::value
                                      && std::is_convertible<MarshallerType, ReturnType>::value)>::type * = nullptr>
@@ -49,6 +50,7 @@ public:
              typename std::enable_if<!std::is_convertible<MarshallerType, ReturnType>::value>::type * = nullptr>
     auto operator ()(ArgumentsType &&...arguments) noexcept -> ReturnType;
 
+    // Controls
     template<SignalConnectionMode ConnectionMode = SignalConnectionMode::DefaultConnection,
              typename CallableType,
              typename std::enable_if<(Internal::IsSignalCallable<CallableType, ReturnType, ArgumentsType ...>::value
@@ -108,14 +110,12 @@ public:
     auto disconnect(CallableType callable) noexcept -> bool;
 
     auto disconnect(ConnectionType *signalConnection) noexcept -> bool;
-
     auto disconnectAll() noexcept -> void;
 
     virtual auto destroyed(Internal::TrackableObject *trackableObject) noexcept -> void final;
 
 private:
     std::list<std::pair<ConnectionType, Internal::TrackableObject *>> m_connections {};
-
     SpinLock m_context {};
 };
 

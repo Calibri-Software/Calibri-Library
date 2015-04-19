@@ -18,6 +18,7 @@ static thread_local SpinLock threadContext {};
 class EnableSignal : private DisableCopyable, public Internal::TrackableObject
 {
 public:
+    // Getters
     auto context() const noexcept -> SpinLock &;
 
 private:

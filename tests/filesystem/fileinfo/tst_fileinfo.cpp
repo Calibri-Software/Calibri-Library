@@ -71,13 +71,13 @@ void tst_FileInfo::testFileName()
 void tst_FileInfo::testFileNotFound()
 {
     Calibri::FileInfo fileInfo { "TestFile" };
-    QVERIFY(!fileInfo.exists());
+    QVERIFY(!fileInfo.isExists());
 
     QFile file("TestFile");
     QVERIFY(file.open(QIODevice::ReadWrite));
     file.close();
     fileInfo = Calibri::FileInfo("TestFile");
-    QVERIFY(fileInfo.exists());
+    QVERIFY(fileInfo.isExists());
 
     QVERIFY(Calibri::remove("TestFile"));
 }

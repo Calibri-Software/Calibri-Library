@@ -15,6 +15,7 @@ template<typename ValueType>
 class LastValue
 {
 public:
+    // Operators
     auto operator ()(ValueType &&value) noexcept -> bool;
     operator ValueType() const noexcept;
 

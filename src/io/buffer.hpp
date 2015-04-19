@@ -19,13 +19,16 @@ public:
     Buffer(const char *data);
     Buffer(Buffer &&other) noexcept;
 
+    // Operators
     auto operator =(Buffer &&other) noexcept -> Buffer &;
     auto operator ==(const Buffer &other) const noexcept -> bool;
     auto operator !=(const Buffer &other) const noexcept -> bool;
 
+    // Getters
     auto data() const noexcept -> const ByteArray &;
     auto size() const noexcept -> sizeinfo;
 
+    // Controls
     using IORandomAccessInterface::read;
     auto read(sizeinfo size) noexcept -> ByteArray;
 

@@ -26,8 +26,8 @@ public:
     DirectoryIterator(const std::string &path) noexcept;
     ~DirectoryIterator() noexcept;
 
+    // Controls
     auto hasNext() const noexcept -> bool;
-
     auto next() noexcept -> std::string;
 
 private:

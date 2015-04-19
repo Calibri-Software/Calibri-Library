@@ -359,7 +359,7 @@ auto copyFile(const std::string &from, const std::string &to, bool failIfExists)
 
     FileInfo fileInfo { from };
 
-    if (!fileInfo.exists())
+    if (!fileInfo.isExists())
         return false;
 
     auto toFile = ::open(to.data(), failIfExists ? O_CREAT | O_WRONLY | O_TRUNC | O_EXCL : O_CREAT | O_WRONLY | O_TRUNC, fileInfo.nativeAttributes());

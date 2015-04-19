@@ -34,32 +34,28 @@ class FileInfo
 public:
     FileInfo(const std::string &path) noexcept;
 
+    // Getters
     auto absoluteFilePath() const noexcept -> const std::string &;
     auto absolutePath() const noexcept -> std::string;
     auto fileName() const noexcept -> std::string;
-
     auto type() const noexcept -> FileType;
-
     auto size() const noexcept -> sizeinfo;
-
     auto nativeAttributes() const noexcept -> uint16;
 
-    auto exists() const noexcept -> bool;
+
+    // Controls
+    auto isExists() const noexcept -> bool;
     auto isDirectory() const noexcept -> bool;
     auto isRegularFile() const noexcept -> bool;
     auto isSymbolicLink() const noexcept -> bool;
     auto isDirectorySymbolicLink() const noexcept -> bool;
     auto isOther() const noexcept -> bool;
-
     auto refresh() noexcept -> void;
 
 private:
     std::string m_absoluteFilePath {};
-
     FileType m_type {};
-
     sizeinfo m_size {};
-
     uint16 m_nativeAttributes {};
 
     auto refresh(const std::string &path) noexcept -> void;
@@ -106,7 +102,7 @@ inline auto FileInfo::nativeAttributes() const noexcept -> uint16
     return m_nativeAttributes;
 }
 
-inline auto FileInfo::exists() const noexcept -> bool
+inline auto FileInfo::isExists() const noexcept -> bool
 {
     return m_type != FileType::FileNotFound;
 }
@@ -133,7 +129,7 @@ inline auto FileInfo::isDirectorySymbolicLink() const noexcept -> bool
 
 inline auto FileInfo::isOther() const noexcept -> bool
 {
-    return exists() && !isDirectory() && !isRegularFile() && !isSymbolicLink() && !isDirectorySymbolicLink();
+    return isExists() && !isDirectory() && !isRegularFile() && !isSymbolicLink() && !isDirectorySymbolicLink();
 }
 
 inline auto FileInfo::refresh() noexcept -> void

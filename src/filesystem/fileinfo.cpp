@@ -39,7 +39,7 @@ FileInfo::FileInfo(const std::string &path) noexcept
 {
     refresh(path);
 
-    if (exists()) {
+    if (isExists()) {
 #if defined(OS_WINDOWS)
 #   if defined(UNICODE)
         auto unicodePath = metaCast<std::wstring>(path);

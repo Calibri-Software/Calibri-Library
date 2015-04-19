@@ -38,16 +38,17 @@ class MemberFunctionWrapper<MemberFunction<ReturnType, ObjectType, ArgumentsType
 public:
     constexpr MemberFunctionWrapper(ObjectType *object, MemberFunction<ReturnType, ObjectType, ArgumentsType ...> memberFunction) noexcept;
 
+    // Getters
     auto object() const noexcept -> ObjectType *;
     auto memberFunction() const noexcept -> const MemberFunction<ReturnType, ObjectType, ArgumentsType ...> &;
 
+    // Operators
     auto operator ()(ArgumentsType &&...arguments) const -> ReturnType;
     auto operator ==(const MemberFunctionWrapper &other) const noexcept -> bool;
     auto operator !=(const MemberFunctionWrapper &other) const noexcept -> bool;
 
 private:
     MemberFunction<ReturnType, ObjectType, ArgumentsType ...> m_memberFunction {};
-
     ObjectType *m_object {};
 };
 
@@ -59,16 +60,17 @@ class MemberFunctionWrapper<ConstMemberFunction<ReturnType, ObjectType, Argument
 public:
     constexpr MemberFunctionWrapper(ObjectType *object, ConstMemberFunction<ReturnType, ObjectType, ArgumentsType ...> memberFunction) noexcept;
 
+    // Getters
     auto object() const noexcept -> ObjectType *;
     auto memberFunction() const noexcept -> const ConstMemberFunction<ReturnType, ObjectType, ArgumentsType ...> &;
 
+    // Operators
     auto operator ()(ArgumentsType &&...arguments) const -> ReturnType;
     auto operator ==(const MemberFunctionWrapper &other) const noexcept -> bool;
     auto operator !=(const MemberFunctionWrapper &other) const noexcept -> bool;
 
 private:
     ConstMemberFunction<ReturnType, ObjectType, ArgumentsType ...> m_memberFunction {};
-
     ObjectType *m_object {};
 };
 

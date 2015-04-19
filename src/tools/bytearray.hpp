@@ -22,20 +22,20 @@ public:
     ByteArray(const char *data, sizeinfo size);
     ByteArray(const char *data);
 
+    // Operators
     operator const char *() const noexcept;
     operator char *() noexcept;
-
     auto operator +=(const ByteArray &data) noexcept -> ByteArray &;
     auto operator +=(const char *data) noexcept -> ByteArray &;
     auto operator +=(char character) noexcept -> ByteArray &;
     auto operator +=(std::initializer_list<char> data) noexcept -> ByteArray &;
 
+    // Controls
     auto append(const ByteArray &data) noexcept -> ByteArray &;
     auto append(const char *data, sizeinfo size) noexcept -> ByteArray &;
     auto append(const char *data) noexcept -> ByteArray &;
     auto append(char character) noexcept -> ByteArray &;
     auto append(std::initializer_list<char> data) noexcept -> ByteArray &;
-
     auto toHex() const noexcept -> ByteArray;
     auto toBase64() const noexcept -> ByteArray;
 

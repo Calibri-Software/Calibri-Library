@@ -17,6 +17,7 @@ namespace Internal {
 class ToLower
 {
 public:
+    // Operators
     template<typename DataType>
     auto operator ()(DataType data) const noexcept -> DataType;
 

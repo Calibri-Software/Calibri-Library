@@ -21,6 +21,7 @@ public:
     IsAnyOf(const DataType &data) noexcept;
     IsAnyOf(DataType &&data) noexcept;
 
+    // Operators
     auto operator ()(typename DataType::value_type character) const noexcept -> bool;
 
 private:

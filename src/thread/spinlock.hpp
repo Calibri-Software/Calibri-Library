@@ -33,12 +33,11 @@ static inline void yield(uint32 spin) noexcept
 class SpinLock : private DisableCopyable
 {
 public:
-    constexpr SpinLock() noexcept = default;
-
+    // Controls
     auto lock() noexcept -> void;
     auto unlock() noexcept -> void;
-
     auto tryLock() noexcept -> bool;
+    auto try_lock() noexcept -> bool;
 
 private:
     std::atomic_flag m_atomicFlag { ATOMIC_FLAG_INIT };
@@ -59,6 +58,11 @@ inline auto SpinLock::unlock() noexcept -> void
 inline auto SpinLock::tryLock() noexcept -> bool
 {
     return !m_atomicFlag.test_and_set(std::memory_order_acquire);
+}
+
+inline auto SpinLock::try_lock() noexcept -> bool
+{
+    return tryLock();
 }
 
 } // end namespace Thread

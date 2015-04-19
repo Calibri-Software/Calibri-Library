@@ -14,6 +14,7 @@ namespace Internal {
 class IsSpace
 {
 public:
+    // Operators
     template<typename DataType>
     auto operator ()(DataType data) const noexcept -> bool;
 
